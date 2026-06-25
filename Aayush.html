@@ -1,0 +1,1794 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="20" fill="url(#g)"/>
+  <text x="50" y="68" font-size="48" font-weight="bold" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif">AP</text>
+</svg>
+
+import { motion } from 'framer-motion';
+import { SectionHeading } from './SectionHeading';
+import { Sparkles, Target, Users, Brain } from 'lucide-react';
+
+const highlights = [
+  {
+    icon: Brain,
+    title: 'Technical Curiosity',
+    description: 'Exploring AI, ML, and prompt engineering with hands-on projects.',
+  },
+  {
+    icon: Users,
+    title: 'Proven Leadership',
+    description: 'Former Head Boy and President of Cultural & Educational Club.',
+  },
+  {
+    icon: Sparkles,
+    title: 'Creative Soul',
+    description: 'Published poet, quote writer, and visual storyteller.',
+  },
+  {
+    icon: Target,
+    title: 'Impact Ready',
+    description: 'Independent learner ready to create real impact from day one.',
+  },
+];
+
+export function About() {
+  return (
+    <section id="about" className="relative py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          title="About Me"
+          subtitle="A rare combination of technical curiosity, fearless communication, and proven leadership."
+        />
+
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <div className="glass-card rounded-3xl p-8 md:p-10">
+              <p className="text-lg md:text-xl text-slate-300 leading-relaxed mb-6">
+                I am an ambitious{' '}
+                <span className="text-blue-400 font-semibold">B.Tech CSE (AI & ML)</span>{' '}
+                student and former Head Boy with a rare combination of technical curiosity,
+                fearless communication, and proven leadership.
+              </p>
+              <p className="text-slate-400 leading-relaxed mb-6">
+                I organised every major school event at Dellmond International School,
+                anchored in both Hindi & English without a script, and independently
+                mastered financial compliance tools including ITR, PAN, and Udyam registration.
+              </p>
+              <p className="text-slate-400 leading-relaxed">
+                A self-reflective thinker, published poet, and instinct-driven decision
+                maker — I am ready to create real impact from day one.
+              </p>
+            </div>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 gap-4">
+            {highlights.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="glass-card rounded-2xl p-6 text-center group"
+              >
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-blue-500/10 text-blue-400 mb-4 group-hover:bg-blue-500/20 transition-colors">
+                  <item.icon size={28} />
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">{item.title}</h3>
+                <p className="text-sm text-slate-400">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+import { motion } from 'framer-motion';
+import { ReactNode } from 'react';
+
+interface AnimatedCardProps {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+}
+
+export function AnimatedCard({ children, className = '', delay = 0 }: AnimatedCardProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ duration: 0.5, delay, ease: 'easeOut' }}
+      whileHover={{ y: -5 }}
+      className={`glass-card rounded-2xl p-6 ${className}`}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+import { motion } from 'framer-motion';
+import { SectionHeading } from './SectionHeading';
+import { BookOpen, Quote } from 'lucide-react';
+
+const books = [
+  {
+    title: 'Ikigai',
+    author: 'Héctor García & Francesc Miralles',
+    color: 'from-rose-500 to-orange-500',
+    spineColor: 'bg-rose-600',
+    quote: 'Find your reason for being and live with purpose every day.',
+  },
+  {
+    title: 'The Psychology of Money',
+    author: 'Morgan Housel',
+    color: 'from-emerald-500 to-teal-500',
+    spineColor: 'bg-emerald-600',
+    quote: 'Wealth is what you don\'t see — financial freedom is a state of mind.',
+  },
+  {
+    title: 'Manifest',
+    author: 'Roxie Nafousi',
+    color: 'from-violet-500 to-purple-500',
+    spineColor: 'bg-violet-600',
+    quote: 'Turn your dreams into reality through intentional living.',
+  },
+  {
+    title: 'The Subtle Art of Not Giving a F*ck',
+    author: 'Mark Manson',
+    color: 'from-amber-500 to-red-500',
+    spineColor: 'bg-amber-600',
+    quote: 'Choose what truly matters to you and let go of the rest.',
+  },
+];
+
+export function Books() {
+  return (
+    <section id="books" className="relative py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          title="Books I've Read"
+          subtitle="Pages that have shaped my thinking, my money habits, and my mindset."
+        />
+
+        {/* Bookshelf */}
+        <div className="relative max-w-5xl mx-auto">
+          {/* Shelf */}
+          <div className="absolute bottom-0 left-0 right-0 h-4 bg-gradient-to-r from-amber-800/40 via-amber-700/30 to-amber-800/40 rounded-full"></div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 pb-8">
+            {books.map((book, index) => (
+              <motion.div
+                key={book.title}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.12 }}
+                whileHover={{ y: -12 }}
+                className="group"
+              >
+                <div className="book-spine relative h-64 rounded-r-lg rounded-l-sm shadow-2xl overflow-hidden">
+                  {/* Spine */}
+                  <div className={`absolute left-0 top-0 bottom-0 w-4 ${book.spineColor} opacity-80`}></div>
+
+                  {/* Cover gradient */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${book.color} opacity-90`}></div>
+
+                  {/* Cover texture */}
+                  <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==')] opacity-30"></div>
+
+                  {/* Content */}
+                  <div className="relative z-10 h-full flex flex-col justify-between p-5 pl-7">
+                    <div>
+                      <BookOpen size={24} className="text-white/80 mb-4" />
+                      <h3 className="text-xl font-bold text-white leading-tight mb-2">{book.title}</h3>
+                      <p className="text-xs text-white/70">{book.author}</p>
+                    </div>
+
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <Quote size={16} className="text-white/60 mb-1" />
+                      <p className="text-xs text-white/90 italic leading-relaxed">{book.quote}</p>
+                    </div>
+                  </div>
+
+                  {/* Shine effect */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Reading Quote */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="max-w-3xl mx-auto mt-16 text-center"
+        >
+          <blockquote className="text-xl md:text-2xl text-slate-300 italic leading-relaxed">
+            “A reader lives a thousand lives before he dies. The man who never reads lives only one.”
+          </blockquote>
+          <cite className="block mt-4 text-slate-500 not-italic">— George R.R. Martin</cite>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+import { motion } from 'framer-motion';
+import { SectionHeading } from './SectionHeading';
+import { Award, BadgeCheck, FileCheck, Landmark } from 'lucide-react';
+
+const certifications = [
+  {
+    icon: BadgeCheck,
+    title: 'Claude Prompt Engineering',
+    issuer: 'Anthropic',
+    description: 'Mastered advanced prompt engineering techniques for AI systems.',
+    color: 'text-purple-400',
+    bgColor: 'bg-purple-500/10',
+  },
+  {
+    icon: FileCheck,
+    title: 'ITR Filing & PAN Correction',
+    issuer: 'Self-Mastery',
+    description: 'Independently learned and practiced income tax filing and PAN correction processes.',
+    color: 'text-blue-400',
+    bgColor: 'bg-blue-500/10',
+  },
+  {
+    icon: Landmark,
+    title: 'MSME Udyam Registration',
+    issuer: 'Government of India',
+    description: 'Certified knowledge of Udyam registration and MSME compliance procedures.',
+    color: 'text-amber-400',
+    bgColor: 'bg-amber-500/10',
+  },
+];
+
+export function Certifications() {
+  return (
+    <section id="certifications" className="relative py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          title="Certifications"
+          subtitle="Professional credentials that validate my technical and compliance expertise."
+        />
+
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {certifications.map((cert, index) => (
+            <motion.div
+              key={cert.title}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -8, rotateY: 5 }}
+              className="glass-card rounded-2xl p-8 text-center group perspective"
+            >
+              <motion.div
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.6 }}
+                className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl ${cert.bgColor} ${cert.color} mb-6`}
+              >
+                <cert.icon size={32} />
+              </motion.div>
+
+              <div className="flex items-center justify-center gap-2 mb-3">
+                <Award size={18} className="text-amber-400" />
+                <span className="text-sm text-slate-400 font-medium">{cert.issuer}</span>
+              </div>
+
+              <h3 className="text-xl font-bold text-white mb-3">{cert.title}</h3>
+              <p className="text-slate-400 text-sm leading-relaxed">{cert.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+import { motion } from 'framer-motion';
+import { SectionHeading } from './SectionHeading';
+import { Mail, Phone, MapPin, Linkedin, ExternalLink } from 'lucide-react';
+
+const contactLinks = [
+  {
+    icon: Mail,
+    label: 'Email',
+    value: 'aayushpaliyan@gmail.com',
+    href: 'mailto:aayushpaliyan@gmail.com',
+    color: 'text-rose-400',
+    bgColor: 'bg-rose-500/10',
+  },
+  {
+    icon: Phone,
+    label: 'Phone',
+    value: '+91 81265 23317',
+    href: 'tel:+918126523317',
+    color: 'text-emerald-400',
+    bgColor: 'bg-emerald-500/10',
+  },
+  {
+    icon: Linkedin,
+    label: 'LinkedIn',
+    value: 'linkedin.com/in/aayush-paliyan-922417413',
+    href: 'https://www.linkedin.com/in/aayush-paliyan-922417413',
+    color: 'text-blue-400',
+    bgColor: 'bg-blue-500/10',
+  },
+  {
+    icon: MapPin,
+    label: 'Location',
+    value: 'Dehradun, Uttarakhand',
+    href: '#',
+    color: 'text-amber-400',
+    bgColor: 'bg-amber-500/10',
+  },
+];
+
+export function Contact() {
+  return (
+    <section id="contact" className="relative py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          title="Let's Connect"
+          subtitle="Open to opportunities, collaborations, and meaningful conversations."
+        />
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="glass-card rounded-3xl p-8 md:p-12 max-w-4xl mx-auto"
+        >
+          <div className="grid sm:grid-cols-2 gap-6 mb-10">
+            {contactLinks.map((link, index) => (
+              <motion.a
+                key={link.label}
+                href={link.href}
+                target={link.href.startsWith('http') ? '_blank' : undefined}
+                rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-center gap-4 p-5 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-slate-600 transition-colors group"
+              >
+                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${link.bgColor} ${link.color} shrink-0`}>
+                  <link.icon size={22} />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-sm text-slate-500 mb-0.5">{link.label}</p>
+                  <p className="text-slate-200 font-medium truncate flex items-center gap-1 group-hover:text-white">
+                    {link.value}
+                    {link.href.startsWith('http') && <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />}
+                  </p>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <p className="text-slate-400 mb-6">References available upon request.</p>
+            <motion.a
+              href="https://www.linkedin.com/in/aayush-paliyan-922417413"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-full text-white font-medium"
+            >
+              <Linkedin size={20} />
+              Connect on LinkedIn
+            </motion.a>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Footer */}
+      <footer className="mt-24 border-t border-slate-800/50 pt-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-slate-500 text-sm">
+            © {new Date().getFullYear()} Aayush Paliyan. Built with passion, React & Tailwind CSS.
+          </p>
+        </div>
+      </footer>
+    </section>
+  );
+}
+
+import { motion } from 'framer-motion';
+import { SectionHeading } from './SectionHeading';
+import { GraduationCap, School, BookOpen } from 'lucide-react';
+
+const education = [
+  {
+    icon: GraduationCap,
+    degree: 'B.Tech — CSE (AI & ML)',
+    detail: '4-Year Programme',
+    institution: 'Currently Enrolled',
+    period: '2025 – 2029',
+    status: 'current',
+  },
+  {
+    icon: School,
+    degree: 'Class XII — PCM, CBSE',
+    detail: 'Dellmond International School',
+    institution: 'Passed 2025',
+    period: '',
+    status: 'completed',
+  },
+  {
+    icon: BookOpen,
+    degree: 'Class X — CBSE',
+    detail: 'Dellmond International School',
+    institution: 'Passed 2023',
+    period: '',
+    status: 'completed',
+  },
+];
+
+export function Education() {
+  return (
+    <section id="education" className="relative py-24 md:py-32">
+      <div className="section-line max-w-4xl mx-auto mb-24"></div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          title="Education"
+          subtitle="My academic journey from school to becoming an AI engineer."
+        />
+
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
+          {education.map((item, index) => (
+            <motion.div
+              key={item.degree}
+              initial={{ opacity: 0, y: 40, rotateX: -10 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              whileHover={{ y: -10, scale: 1.02 }}
+              className="glass-card rounded-3xl p-8 text-center relative overflow-hidden group"
+            >
+              {/* Status badge */}
+              {item.status === 'current' && (
+                <div className="absolute top-4 right-4">
+                  <span className="px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                    Current
+                  </span>
+                </div>
+              )}
+
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-blue-500/20 to-blue-600/10 text-blue-400 mb-6 group-hover:scale-110 transition-transform">
+                <item.icon size={36} />
+              </div>
+
+              <h3 className="text-xl font-bold text-white mb-2">{item.degree}</h3>
+              <p className="text-blue-400 font-medium mb-1">{item.detail}</p>
+              <p className="text-slate-400 text-sm mb-4">{item.institution}</p>
+
+              {item.period && (
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/80 text-slate-300 text-sm border border-slate-700">
+                  {item.period}
+                </div>
+              )}
+
+              {/* Decorative corner */}
+              <div className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-blue-500/5 blur-2xl group-hover:bg-blue-500/10 transition-colors"></div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+import { motion } from 'framer-motion';
+import { SectionHeading } from './SectionHeading';
+import { Crown, Mic2, Trophy } from 'lucide-react';
+
+const experiences = [
+  {
+    icon: Crown,
+    title: 'Head Boy',
+    organization: 'Dellmond International School',
+    period: '2024 – 2025',
+    board: 'CBSE Board, Dehradun',
+    points: [
+      'Elected Head Boy — highest student honour; set benchmark for discipline, accountability & mentorship.',
+      'Personally called by Principal & staff to train juniors on time management & event execution strategy.',
+      'Served as Class Monitor in final year — bridged student-teacher communication.',
+    ],
+  },
+  {
+    icon: Mic2,
+    title: 'President — Cultural & Educational Club',
+    organization: 'Dellmond International School',
+    period: '2023 – 2025',
+    board: '',
+    points: [
+      'Planned & executed all major school cultural, educational & annual functions end to end.',
+      'Lead anchor for every event in Hindi & English — zero script, maximum impact.',
+      'Built inter-school event reputation; events attended by 500+ students & faculty.',
+    ],
+  },
+  {
+    icon: Trophy,
+    title: 'Sports & Creative Achievements',
+    organization: 'Dellmond International School',
+    period: '2021 – 2025',
+    board: '',
+    points: [
+      'Volleyball — Won multiple inter-school tournaments; strong team player & strategist.',
+      'Chess — Annual school & inter-school competitor; analytical mindset under pressure.',
+      'Poetry & Quotes — Original writer; expresses complex thoughts with clarity and depth.',
+      'Nature Photography & Videography — Creative eye for storytelling through visuals.',
+    ],
+  },
+];
+
+export function Experience() {
+  return (
+    <section id="experience" className="relative py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          title="Experience & Leadership"
+          subtitle="From leading the school as Head Boy to anchoring events without a script."
+        />
+
+        <div className="max-w-4xl mx-auto">
+          {experiences.map((exp, index) => (
+            <motion.div
+              key={exp.title}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              className="relative pl-10 md:pl-12 pb-12 last:pb-0"
+            >
+              {/* Timeline line */}
+              {index !== experiences.length - 1 && <div className="timeline-line"></div>}
+
+              {/* Timeline dot */}
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15 + 0.2, type: 'spring' }}
+                className="absolute left-0 top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-slate-950 shadow-lg shadow-blue-500/30"
+              />
+
+              <div className="glass-card rounded-2xl p-6 md:p-8 hover:border-blue-500/30 transition-colors">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                  <div className="flex items-start gap-4">
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 shrink-0">
+                      <exp.icon size={24} />
+                    </div>
+                    <div>
+                      <h3 className="text-xl md:text-2xl font-bold text-white">{exp.title}</h3>
+                      <p className="text-blue-400 font-medium">{exp.organization}</p>
+                    </div>
+                  </div>
+                  <div className="text-left md:text-right">
+                    <span className="inline-block px-3 py-1 rounded-full text-sm bg-slate-800 text-slate-300 border border-slate-700">
+                      {exp.period}
+                    </span>
+                    {exp.board && (
+                      <p className="text-sm text-slate-500 mt-2">{exp.board}</p>
+                    )}
+                  </div>
+                </div>
+
+                <ul className="space-y-3">
+                  {exp.points.map((point, pointIndex) => (
+                    <motion.li
+                      key={pointIndex}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.15 + pointIndex * 0.1 }}
+                      className="flex items-start gap-3 text-slate-300"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0"></span>
+                      {point}
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+import { motion } from 'framer-motion';
+import { ChevronDown, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { useEffect, useState } from 'react';
+
+const titles = [
+  'Future AI Engineer',
+  'Student Leader',
+  'Prompt Engineer',
+  'Event Organiser',
+  'Published Poet',
+];
+
+export function Hero() {
+  const [currentTitle, setCurrentTitle] = useState(0);
+  const [displayText, setDisplayText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const title = titles[currentTitle];
+    const timer = setTimeout(
+      () => {
+        if (!isDeleting) {
+          if (displayText.length < title.length) {
+            setDisplayText(title.slice(0, displayText.length + 1));
+          } else {
+            setTimeout(() => setIsDeleting(true), 2000);
+          }
+        } else {
+          if (displayText.length > 0) {
+            setDisplayText(displayText.slice(0, -1));
+          } else {
+            setIsDeleting(false);
+            setCurrentTitle((prev) => (prev + 1) % titles.length);
+          }
+        }
+      },
+      isDeleting ? 50 : 100
+    );
+
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, currentTitle]);
+
+  const scrollToAbout = () => {
+    document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* Background orbs */}
+      <div className="orb orb-1"></div>
+      <div className="orb orb-2"></div>
+      <div className="orb orb-3"></div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="inline-block mb-6"
+          >
+            <span className="px-4 py-2 rounded-full text-sm font-medium bg-blue-500/10 border border-blue-500/30 text-blue-300">
+              B.Tech CSE (AI & ML) Student
+            </span>
+          </motion.div>
+
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight">
+            <span className="block text-white">AAYUSH</span>
+            <span className="block gradient-text">PALIYAN</span>
+          </h1>
+
+          <div className="h-12 md:h-16 mb-8">
+            <p className="text-xl md:text-3xl text-slate-300 font-light">
+              {displayText}
+              <span className="typewriter-cursor"></span>
+            </p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+            className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-slate-400 mb-10"
+          >
+            <a href="mailto:aayushpaliyan@gmail.com" className="flex items-center gap-2 hover:text-blue-400 transition-colors">
+              <Mail size={18} />
+              <span className="hidden sm:inline">aayushpaliyan@gmail.com</span>
+            </a>
+            <a href="tel:+918126523317" className="flex items-center gap-2 hover:text-blue-400 transition-colors">
+              <Phone size={18} />
+              <span>+91 81265 23317</span>
+            </a>
+            <span className="flex items-center gap-2">
+              <MapPin size={18} />
+              Dehradun, Uttarakhand
+            </span>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1 }}
+            className="flex flex-wrap items-center justify-center gap-4"
+          >
+            <a
+              href="https://www.linkedin.com/in/aayush-paliyan-922417413"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-full text-white font-medium"
+            >
+              <Linkedin size={20} />
+              Connect on LinkedIn
+            </a>
+            <button
+              onClick={scrollToAbout}
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-slate-600 text-slate-300 hover:bg-white/5 hover:border-slate-500 transition-all"
+            >
+              Explore My World
+            </button>
+          </motion.div>
+        </motion.div>
+
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          onClick={scrollToAbout}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-slate-400 hover:text-blue-400 transition-colors"
+          aria-label="Scroll down"
+        >
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          >
+            <ChevronDown size={32} />
+          </motion.div>
+        </motion.button>
+      </div>
+    </section>
+  );
+}
+
+import { motion } from 'framer-motion';
+import { SectionHeading } from './SectionHeading';
+
+const interests = [
+  {
+    name: 'Chess',
+    emoji: '♟️',
+    description:
+      'Annual school & inter-school competitor. Chess taught me to think several moves ahead and stay calm under pressure.',
+    color: 'from-amber-600/20 to-amber-800/10',
+    borderColor: 'border-amber-500/30',
+  },
+  {
+    name: 'Volleyball',
+    emoji: '🏐',
+    description:
+      'Won multiple inter-school tournaments. A strong team player who values strategy, timing, and trust on the court.',
+    color: 'from-blue-600/20 to-blue-800/10',
+    borderColor: 'border-blue-500/30',
+  },
+  {
+    name: 'Poetry & Quotes',
+    emoji: '✍️',
+    description:
+      'Published poet and original writer. I express complex thoughts with clarity, depth, and emotional honesty.',
+    color: 'from-purple-600/20 to-purple-800/10',
+    borderColor: 'border-purple-500/30',
+  },
+  {
+    name: 'Nature Photography',
+    emoji: '📸',
+    description:
+      'Capturing landscapes and moments that tell stories without words. A creative eye for visual storytelling.',
+    color: 'from-emerald-600/20 to-emerald-800/10',
+    borderColor: 'border-emerald-500/30',
+  },
+  {
+    name: 'Videography',
+    emoji: '🎬',
+    description:
+      'Creating visual narratives that combine motion, music, and emotion into compelling stories.',
+    color: 'from-rose-600/20 to-rose-800/10',
+    borderColor: 'border-rose-500/30',
+  },
+  {
+    name: 'Reading',
+    emoji: '📚',
+    description:
+      'An avid reader of psychology, self-growth, and philosophy. Books shape the way I see the world.',
+    color: 'from-cyan-600/20 to-cyan-800/10',
+    borderColor: 'border-cyan-500/30',
+  },
+];
+
+function ChessBoard() {
+  const squares = Array.from({ length: 64 }, (_, i) => {
+    const row = Math.floor(i / 8);
+    const col = i % 8;
+    return (row + col) % 2 === 0;
+  });
+
+  return (
+    <div className="grid grid-cols-8 gap-0.5 w-32 h-32 rounded-lg overflow-hidden border border-slate-700 rotate-12 hover:rotate-0 transition-transform duration-500 shadow-2xl">
+      {squares.map((isLight, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: i * 0.005 }}
+          className={`w-full h-full ${isLight ? 'bg-slate-300' : 'bg-slate-600'}`}
+        />
+      ))}
+    </div>
+  );
+}
+
+export function Interests() {
+  return (
+    <section id="interests" className="relative py-24 md:py-32 overflow-hidden">
+      <div className="section-line max-w-4xl mx-auto mb-24"></div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          title="Beyond the Code"
+          subtitle="The games I play, the stories I write, and the moments I capture."
+        />
+
+        {/* Featured Chess Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="glass-card rounded-3xl p-8 md:p-12 mb-12 chess-pattern"
+        >
+          <div className="flex flex-col md:flex-row items-center gap-10">
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              className="shrink-0"
+            >
+              <ChessBoard />
+            </motion.div>
+            <div className="text-center md:text-left">
+              <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
+                <span className="text-4xl">♟️</span>
+                <h3 className="text-3xl md:text-4xl font-bold text-white">Chess</h3>
+              </div>
+              <p className="text-lg text-slate-300 leading-relaxed mb-4">
+                Chess is more than a game to me — it is a mental gym. As an annual school
+                and inter-school competitor, I have learned to calculate risks, anticipate
+                outcomes, and make sharp decisions under pressure.
+              </p>
+              <p className="text-slate-400">
+                Every move carries consequence. Every match builds patience, strategy, and resilience.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Interest Cards Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {interests.map((interest, index) => (
+            <motion.div
+              key={interest.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className={`glass-card rounded-2xl p-6 border ${interest.borderColor} bg-gradient-to-br ${interest.color}`}
+            >
+              <div className="text-4xl mb-4">{interest.emoji}</div>
+              <h3 className="text-xl font-bold text-white mb-3">{interest.name}</h3>
+              <p className="text-slate-300 text-sm leading-relaxed">{interest.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
+
+const navLinks = [
+  { name: 'About', href: '#about' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Education', href: '#education' },
+  { name: 'Interests', href: '#interests' },
+  { name: 'Books', href: '#books' },
+  { name: 'Contact', href: '#contact' },
+];
+
+export function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleLinkClick = (href: string) => {
+    setIsMobileMenuOpen(false);
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <>
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled ? 'py-3 glass-card border-x-0 border-t-0 rounded-none' : 'py-5 bg-transparent'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            <motion.a
+              href="#"
+              className="text-xl font-bold tracking-tight"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="gradient-text">Aayush</span>
+              <span className="text-slate-200"> Paliyan</span>
+            </motion.a>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-1">
+              {navLinks.map((link) => (
+                <motion.button
+                  key={link.name}
+                  onClick={() => handleLinkClick(link.href)}
+                  className="px-4 py-2 text-sm text-slate-300 hover:text-white transition-colors rounded-lg hover:bg-white/5"
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {link.name}
+                </motion.button>
+              ))}
+            </div>
+
+            {/* Mobile Menu Button */}
+            <motion.button
+              className="md:hidden p-2 text-slate-300 hover:text-white"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              whileTap={{ scale: 0.9 }}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </motion.button>
+          </div>
+        </div>
+      </motion.nav>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-40 bg-slate-950/95 backdrop-blur-lg pt-24 px-6 md:hidden"
+          >
+            <div className="flex flex-col space-y-4">
+              {navLinks.map((link, index) => (
+                <motion.button
+                  key={link.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                  onClick={() => handleLinkClick(link.href)}
+                  className="text-left text-2xl font-medium text-slate-300 hover:text-white py-3 border-b border-slate-800"
+                >
+                  {link.name}
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
+import { motion } from 'framer-motion';
+
+interface SectionHeadingProps {
+  title: string;
+  subtitle?: string;
+  centered?: boolean;
+}
+
+export function SectionHeading({ title, subtitle, centered = true }: SectionHeadingProps) {
+  return (
+    <div className={`mb-12 ${centered ? 'text-center' : ''}`}>
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-100px' }}
+        transition={{ duration: 0.6 }}
+        className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
+      >
+        <span className="gradient-text">{title}</span>
+      </motion.h2>
+      {subtitle && (
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-slate-400 text-lg max-w-2xl mx-auto"
+        >
+          {subtitle}
+        </motion.p>
+      )}
+    </div>
+  );
+}
+import { motion } from 'framer-motion';
+import { SectionHeading } from './SectionHeading';
+import { Cpu, Users, Palette, Code, Terminal, FileText, Landmark, Mic } from 'lucide-react';
+
+const skillCategories = [
+  {
+    title: 'Technical',
+    icon: Cpu,
+    color: 'text-blue-400',
+    bgColor: 'bg-blue-500/10',
+    borderColor: 'border-blue-500/20',
+    skills: [
+      'Prompt Engineering',
+      'AI & Machine Learning (Fundamentals)',
+      'ITR Filing',
+      'PAN Correction',
+      'Udyam / MSME Certification',
+    ],
+  },
+  {
+    title: 'Leadership',
+    icon: Users,
+    color: 'text-amber-400',
+    bgColor: 'bg-amber-500/10',
+    borderColor: 'border-amber-500/20',
+    skills: [
+      'Event Management',
+      'Public Speaking',
+      'Script-Free Anchoring (HI + EN)',
+      'Team Coordination',
+    ],
+  },
+  {
+    title: 'Creative',
+    icon: Palette,
+    color: 'text-emerald-400',
+    bgColor: 'bg-emerald-500/10',
+    borderColor: 'border-emerald-500/20',
+    skills: [
+      'Poetry & Quote Writing',
+      'Nature Photography',
+      'Videography',
+      'Chess',
+      'Volleyball',
+    ],
+  },
+];
+
+const skillIcons: Record<string, React.ReactNode> = {
+  'Prompt Engineering': <Terminal size={16} />,
+  'AI & Machine Learning (Fundamentals)': <Code size={16} />,
+  'ITR Filing': <FileText size={16} />,
+  'PAN Correction': <FileText size={16} />,
+  'Udyam / MSME Certification': <Landmark size={16} />,
+  'Event Management': <Users size={16} />,
+  'Public Speaking': <Mic size={16} />,
+  'Script-Free Anchoring (HI + EN)': <Mic size={16} />,
+  'Team Coordination': <Users size={16} />,
+  'Poetry & Quote Writing': <Palette size={16} />,
+  'Nature Photography': <Palette size={16} />,
+  Videography: <Palette size={16} />,
+  Chess: <Palette size={16} />,
+  Volleyball: <Palette size={16} />,
+};
+
+export function Skills() {
+  return (
+    <section id="skills" className="relative py-24 md:py-32">
+      <div className="section-line max-w-4xl mx-auto mb-24"></div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          title="My Skills"
+          subtitle="A blend of technical expertise, leadership experience, and creative expression."
+        />
+
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+          {skillCategories.map((category, categoryIndex) => (
+            <motion.div
+              key={category.title}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: categoryIndex * 0.15 }}
+              whileHover={{ y: -8 }}
+              className={`glass-card rounded-3xl p-8 border-t-4 ${category.borderColor.replace('border', 'border-t')}`}
+            >
+              <div
+                className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl ${category.bgColor} ${category.color} mb-6`}
+              >
+                <category.icon size={32} />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-6">{category.title}</h3>
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill, index) => (
+                  <motion.span
+                    key={skill}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: categoryIndex * 0.15 + index * 0.05 }}
+                    className="skill-tag inline-flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-slate-300"
+                  >
+                    {skillIcons[skill]}
+                    {skill}
+                  </motion.span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+import { motion } from 'framer-motion';
+import { SectionHeading } from './SectionHeading';
+import { Brain, MessageCircle, Lightbulb, Users, BookOpen, Zap } from 'lucide-react';
+
+const strengths = [
+  {
+    icon: Brain,
+    title: 'Comfortable in Solitude',
+    description: 'Thinks deep, acts sharp. I find clarity in quiet reflection.',
+  },
+  {
+    icon: MessageCircle,
+    title: 'Speaks Fearlessly',
+    description: 'Always backed by facts. I communicate with conviction and clarity.',
+  },
+  {
+    icon: Zap,
+    title: 'Strong Intuition',
+    description: 'Situational awareness that helps me read people and moments well.',
+  },
+  {
+    icon: Lightbulb,
+    title: 'Original Thinker',
+    description: 'Poet, storyteller, creator. I see connections others miss.',
+  },
+  {
+    icon: Users,
+    title: 'Approachable to All',
+    description: 'Trusted by juniors and seniors alike. Leadership through connection.',
+  },
+  {
+    icon: BookOpen,
+    title: 'Self-Motivated Learner',
+    description: 'Independent learner who masters new skills through discipline and curiosity.',
+  },
+];
+
+export function Strengths() {
+  return (
+    <section id="strengths" className="relative py-24 md:py-32">
+      <div className="section-line max-w-4xl mx-auto mb-24"></div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          title="My Strengths"
+          subtitle="The qualities that define how I think, lead, and create."
+        />
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {strengths.map((strength, index) => (
+            <motion.div
+              key={strength.title}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              whileHover={{ y: -6, scale: 1.02 }}
+              className="glass-card rounded-2xl p-6 group"
+            >
+              <div className="flex items-start gap-4">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-amber-500/10 text-blue-400 shrink-0 group-hover:text-amber-400 transition-colors">
+                  <strength.icon size={24} />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-2">{strength.title}</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">{strength.description}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+import { Navbar } from './components/Navbar';
+import { Hero } from './components/Hero';
+import { About } from './components/About';
+import { Skills } from './components/Skills';
+import { Experience } from './components/Experience';
+import { Education } from './components/Education';
+import { Certifications } from './components/Certifications';
+import { Interests } from './components/Interests';
+import { Books } from './components/Books';
+import { Strengths } from './components/Strengths';
+import { Contact } from './components/Contact';
+
+function App() {
+  return (
+    <div className="relative min-h-screen bg-slate-950">
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Experience />
+        <Education />
+        <Certifications />
+        <Interests />
+        <Books />
+        <Strengths />
+        <Contact />
+      </main>
+    </div>
+  );
+}
+
+export default App;
+
+@import "tailwindcss";
+
+:root {
+  --color-bg: #0a0f1c;
+  --color-surface: rgba(15, 23, 42, 0.7);
+  --color-primary: #3b82f6;
+  --color-primary-dark: #1e40af;
+  --color-accent: #f59e0b;
+  --color-text: #f8fafc;
+  --color-muted: #94a3b8;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3b82f6, #1e40af);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #60a5fa, #3b82f6);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-blue {
+  background: linear-gradient(135deg, #93c5fd 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.glass-card:hover {
+  border-color: rgba(59, 130, 246, 0.35);
+  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15);
+}
+
+/* Animated background gradient orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  animation: float 20s infinite ease-in-out;
+  pointer-events: none;
+}
+
+.orb-1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.5), transparent 70%);
+  top: -100px;
+  right: -100px;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.3), transparent 70%);
+  top: 40%;
+  left: -100px;
+  animation-delay: -7s;
+}
+
+.orb-3 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(30, 64, 175, 0.4), transparent 70%);
+  bottom: 10%;
+  right: -50px;
+  animation-delay: -14s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 30px) scale(0.95);
+  }
+}
+
+/* Section divider line */
+.section-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+}
+
+/* Timeline styles */
+.timeline-line {
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, #3b82f6, rgba(59, 130, 246, 0.1));
+}
+
+/* Book spine effect */
+.book-spine {
+  position: relative;
+  background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, transparent 10%, transparent 90%, rgba(0,0,0,0.2) 100%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-spine:hover {
+  transform: translateY(-8px) rotateY(-5deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Chess board pattern */
+.chess-pattern {
+  background-image: 
+    linear-gradient(45deg, rgba(59, 130, 246, 0.1) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(59, 130, 246, 0.1) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(59, 130, 246, 0.1) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(59, 130, 246, 0.1) 75%);
+  background-size: 40px 40px;
+  background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+}
+
+/* Skill tag */
+.skill-tag {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Button primary */
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6, #1e40af);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Reveal animation helper */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Typewriter cursor */
+.typewriter-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background-color: #3b82f6;
+  margin-left: 4px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Particle field */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(59, 130, 246, 0.4);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aayush Paliyan | Future AI Engineer & Student Leader</title>
+    <meta name="description" content="Portfolio of Aayush Paliyan - B.Tech CSE (AI & ML) student, Prompt Engineer, Student Leader, Poet, Chess & Volleyball enthusiast." />
+    <script data-arena-recording="true">(function(){
+"use strict";
+var SK="__arena_rec",RRWEB_CDN="https://cdn.jsdelivr.net/npm/rrweb@2.0.0-alpha.4/dist/rrweb.min.js";
+var MAX_RECORDING_MS=600000,MAX_RRWEB_EVENTS=30000,MAX_INTERACTIONS=5000,MAX_CURSOR_POINTS=10000,recStopped=false;
+var stored=null;try{var raw=sessionStorage.getItem(SK);if(raw)stored=JSON.parse(raw);}catch(ex){}
+var meta=stored?stored.m||null:null,rrwebEvents=stored?stored.r||[]:[],rrwebStarted=false,startTime=stored?stored.st||Date.now():Date.now();
+var interactions=stored?stored.i||[]:[],cursorPath=stored?stored.c||[]:[],lastCursorSample=0,lastScrollSample=0;
+var pageHeight=document.documentElement.scrollHeight;
+var viewport={width:window.innerWidth,height:window.innerHeight};
+function isCapped(){if(recStopped)return true;if(Date.now()-startTime>=MAX_RECORDING_MS){recStopped=true;return true;}return false;}
+function persist(){try{var d=JSON.stringify({r:rrwebEvents,i:interactions,c:cursorPath,m:meta,st:startTime});sessionStorage.setItem(SK,d);}catch(ex){rrwebEvents=rrwebEvents.slice(Math.floor(rrwebEvents.length/2));try{sessionStorage.setItem(SK,JSON.stringify({r:rrwebEvents,i:interactions,c:cursorPath,m:meta,st:startTime}));}catch(ex2){}}}
+setInterval(persist,5000);
+window.addEventListener("resize",function(){viewport={width:window.innerWidth,height:window.innerHeight};pageHeight=document.documentElement.scrollHeight;});
+document.addEventListener("click",function(e){if(isCapped()||interactions.length>=MAX_INTERACTIONS)return;var el=e.target;var tag=el.tagName?el.tagName.toLowerCase():"";var text=(el.textContent||"").trim().substring(0,80);var classes=el.className&&typeof el.className==="string"?el.className.substring(0,120):"";interactions.push({type:"click",t:Date.now()-startTime,x:Math.round(e.clientX),y:Math.round(e.clientY),element:{tag:tag,text:text,classes:classes}});},true);
+window.addEventListener("scroll",function(){if(isCapped()||interactions.length>=MAX_INTERACTIONS)return;var now=Date.now();if(now-lastScrollSample<200)return;lastScrollSample=now;var scrollY=Math.round(window.scrollY||window.pageYOffset||0);var depthPct=pageHeight>viewport.height?Math.min(100,Math.round(((scrollY+viewport.height)/pageHeight)*100)):100;interactions.push({type:"scroll",t:now-startTime,y:scrollY,depth_pct:depthPct});},{passive:true});
+document.addEventListener("mousemove",function(e){if(isCapped()||cursorPath.length>=MAX_CURSOR_POINTS)return;var now=Date.now();if(now-lastCursorSample<250)return;lastCursorSample=now;cursorPath.push([Math.round(e.clientX),Math.round(e.clientY),now-startTime]);},{passive:true});
+document.addEventListener("keydown",function(e){if(isCapped()||interactions.length>=MAX_INTERACTIONS)return;if(e.target&&(e.target.tagName==="INPUT"||e.target.tagName==="TEXTAREA"))return;interactions.push({type:"keydown",t:Date.now()-startTime,key:e.key});},true);
+function buildAnalytics(){if(!meta)return null;var ph=document.documentElement.scrollHeight;var maxScroll=0,clickElements={},firstClick=null,firstScroll=null,totalDistance=0;for(var i=0;i<interactions.length;i++){var ev=interactions[i];if(ev.type==="scroll"){if(ev.depth_pct>maxScroll)maxScroll=ev.depth_pct;if(!firstScroll)firstScroll=ev.t;}if(ev.type==="click"){if(!firstClick)firstClick=ev.t;var key=ev.element.tag+":"+ev.element.text.substring(0,30);clickElements[key]=true;}}for(var j=1;j<cursorPath.length;j++){var dx=cursorPath[j][0]-cursorPath[j-1][0];var dy=cursorPath[j][1]-cursorPath[j-1][1];totalDistance+=Math.sqrt(dx*dx+dy*dy);}var duration=Date.now()-startTime;var clickHeatmap=[];for(var k=0;k<interactions.length;k++){if(interactions[k].type==="click")clickHeatmap.push([interactions[k].x,interactions[k].y]);}return{generation_id:meta.generationId,tournament_id:meta.tournamentId,started_at:new Date(startTime).toISOString(),ended_at:new Date().toISOString(),duration_ms:duration,viewport:viewport,page_height:ph,interactions:interactions,cursor_path:cursorPath,click_heatmap:clickHeatmap,summary:{total_clicks:clickHeatmap.length,total_scrolls:interactions.filter(function(e){return e.type==="scroll";}).length,max_scroll_depth_pct:maxScroll,unique_elements_clicked:Object.keys(clickElements).length,time_to_first_click_ms:firstClick,time_to_first_scroll_ms:firstScroll,cursor_distance_px:Math.round(totalDistance),active_time_ms:duration}};}
+function loadRrweb(){if(rrwebStarted)return;rrwebStarted=true;var s=document.createElement("script");s.src=RRWEB_CDN;s.onload=function(){var rec=(window.rrweb&&window.rrweb.record)||window.rrwebRecord;if(!rec)return;rec({emit:function(event){if(rrwebEvents.length>=MAX_RRWEB_EVENTS||isCapped())return;rrwebEvents.push(event);}});};s.onerror=function(){};document.head.appendChild(s);}
+window.addEventListener("message",function(e){if(!e.data||typeof e.data.type!=="string")return;if(e.data.type==="arena:init"){if(!meta)startTime=Date.now();meta={generationId:e.data.generationId||e.data.modelId,tournamentId:e.data.tournamentId};persist();loadRrweb();if(e.source)e.source.postMessage({type:"arena:init-ack",generationId:meta.generationId},"*");}if(e.data.type==="arena:flush"){var resp={type:"arena:recording-data",generationId:meta?meta.generationId:null,rrwebEvents:rrwebEvents,analytics:buildAnalytics()};try{sessionStorage.removeItem(SK);}catch(ex){}if(e.source)e.source.postMessage(resp,"*");}});
+loadRrweb();
+})();</script>
+  <script data-arena-views="true">(function(){var isTop=false;try{isTop=window.self===window.top;}catch(e){}if(!isTop)return;window.__ARENA_META={generationId:"kimi-k2.7-code",tournamentId:"c07722b3-fe21-4878-8d60-834dea5eba6a"};var payload={tournamentId:"c07722b3-fe21-4878-8d60-834dea5eba6a",modelId:"kimi-k2.7-code"};try{var r=document.referrer;if(r){var u=new URL(r);payload.referrerDomain=u.hostname;}}catch(e){}try{var vid=null;try{vid=localStorage.getItem('arena_vid');}catch(e){}if(!vid){vid=typeof crypto!=="undefined"&&crypto.randomUUID?crypto.randomUUID():(Date.now().toString(36)+Math.random().toString(36).slice(2)).slice(0,32);try{localStorage.setItem('arena_vid',vid);}catch(e){}}if(vid)payload.viewerId=vid;}catch(e){}try{fetch("https://www.designarena.ai/api/agon/page-views",{"method":"POST","headers":{"Content-Type":"application/json"},"body":JSON.stringify(payload),"keepalive":true});}catch(e){}})();</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+      <script data-element-picker>/**
+ * Agon Element Picker — injected into the preview iframe.
+ *
+ * Listens for postMessage from the parent to toggle inspect mode.
+ * In inspect mode, hovering highlights elements and clicking sends
+ * the element's source location (from data-source-loc) back to the parent.
+ *
+ * Protocol:
+ *   Parent -> iframe:  { type: 'inspect:mode', enabled: true/false }
+ *   iframe -> Parent:  { type: 'element:selected', file, line, column, tag, text, classes, id }
+ */
+(function () {
+  'use strict';
+
+  var inspectEnabled = false;
+  var overlay = null;
+  var label = null;
+  var currentTarget = null;
+
+  function createOverlay() {
+    if (overlay) return;
+
+    overlay = document.createElement('div');
+    overlay.id = '__picker-overlay';
+    overlay.style.cssText = [
+      'position: fixed',
+      'pointer-events: none',
+      'z-index: 2147483647',
+      'border: 2px solid #3b82f6',
+      'background: rgba(59, 130, 246, 0.08)',
+      'transition: all 0.05s ease-out',
+      'display: none',
+      'box-sizing: border-box',
+    ].join(';');
+
+    label = document.createElement('div');
+    label.id = '__picker-label';
+    label.style.cssText = [
+      'position: fixed',
+      'pointer-events: none',
+      'z-index: 2147483647',
+      'background: #1e40af',
+      'color: #fff',
+      'font: 11px/1.4 monospace',
+      'padding: 2px 6px',
+      'border-radius: 3px',
+      'white-space: nowrap',
+      'display: none',
+      'max-width: 400px',
+      'overflow: hidden',
+      'text-overflow: ellipsis',
+    ].join(';');
+
+    document.body.appendChild(overlay);
+    document.body.appendChild(label);
+  }
+
+  function removeOverlay() {
+    if (overlay) { overlay.remove(); overlay = null; }
+    if (label) { label.remove(); label = null; }
+  }
+
+  function findSourceAttr(el) {
+    while (el && el !== document.body && el !== document.documentElement) {
+      var src = el.getAttribute('data-source-loc');
+      if (src) return { element: el, source: src };
+      el = el.parentElement;
+    }
+    return null;
+  }
+
+  function parseSource(sourceStr) {
+    // Format: "relative/path.tsx:line:col"
+    var parts = sourceStr.split(':');
+    if (parts.length < 3) return { file: sourceStr, line: 0, column: 0 };
+    var col = parseInt(parts.pop(), 10);
+    var line = parseInt(parts.pop(), 10);
+    var file = parts.join(':'); // rejoin in case path has colons (unlikely but safe)
+    return { file: file, line: line, column: col };
+  }
+
+  function highlightElement(el) {
+    if (!overlay || !el) return;
+
+    var rect = el.getBoundingClientRect();
+    overlay.style.top = rect.top + 'px';
+    overlay.style.left = rect.left + 'px';
+    overlay.style.width = rect.width + 'px';
+    overlay.style.height = rect.height + 'px';
+    overlay.style.display = 'block';
+
+    var tag = el.tagName.toLowerCase();
+    var src = el.getAttribute('data-source-loc');
+    var labelText = '<' + tag + '>';
+    if (src) {
+      var parsed = parseSource(src);
+      labelText += '  ' + parsed.file + ':' + parsed.line;
+    }
+    label.textContent = labelText;
+
+    // Position label above the element, or below if too close to top
+    var labelTop = rect.top - 22;
+    if (labelTop < 4) labelTop = rect.bottom + 4;
+    label.style.top = labelTop + 'px';
+    label.style.left = Math.max(4, rect.left) + 'px';
+    label.style.display = 'block';
+  }
+
+  function hideOverlay() {
+    if (overlay) overlay.style.display = 'none';
+    if (label) label.style.display = 'none';
+    currentTarget = null;
+  }
+
+  function onMouseOver(e) {
+    if (!inspectEnabled) return;
+    var target = e.target;
+
+    // Skip our own overlay elements
+    if (target === overlay || target === label) return;
+    if (target.id === '__picker-overlay' || target.id === '__picker-label') return;
+
+    var found = findSourceAttr(target);
+    if (found) {
+      currentTarget = found.element;
+      highlightElement(found.element);
+    } else {
+      currentTarget = target;
+      highlightElement(target);
+    }
+  }
+
+  function onMouseOut(e) {
+    if (!inspectEnabled) return;
+    var related = e.relatedTarget;
+    if (related === overlay || related === label) return;
+    if (!e.relatedTarget || e.relatedTarget === document) {
+      hideOverlay();
+    }
+  }
+
+  function onClick(e) {
+    if (!inspectEnabled) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+
+    var target = e.target;
+    if (target === overlay || target === label) return;
+
+    var found = findSourceAttr(target);
+    var element = found ? found.element : target;
+    var sourceStr = found ? found.source : null;
+
+    var info = {
+      type: 'element:selected',
+      tag: element.tagName.toLowerCase(),
+      text: (element.textContent || '').trim().substring(0, 200),
+      classes: element.className && typeof element.className === 'string'
+        ? element.className.substring(0, 300) : '',
+      id: element.id || '',
+      file: null,
+      line: null,
+      column: null,
+    };
+
+    if (sourceStr) {
+      var parsed = parseSource(sourceStr);
+      info.file = parsed.file;
+      info.line = parsed.line;
+      info.column = parsed.column;
+    }
+
+    // Send to parent
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage(info, '*');
+    }
+    // Also log locally for standalone testing
+    console.log('[element-picker] Selected:', info);
+  }
+
+  function enableInspect() {
+    if (inspectEnabled) return;
+    inspectEnabled = true;
+    createOverlay();
+    document.addEventListener('mouseover', onMouseOver, true);
+    document.addEventListener('mouseout', onMouseOut, true);
+    document.addEventListener('click', onClick, true);
+    document.body.style.cursor = 'crosshair';
+    console.log('[element-picker] Inspect mode ON');
+  }
+
+  function disableInspect() {
+    if (!inspectEnabled) return;
+    inspectEnabled = false;
+    document.removeEventListener('mouseover', onMouseOver, true);
+    document.removeEventListener('mouseout', onMouseOut, true);
+    document.removeEventListener('click', onClick, true);
+    hideOverlay();
+    removeOverlay();
+    document.body.style.cursor = '';
+    console.log('[element-picker] Inspect mode OFF');
+  }
+
+  // Listen for commands from parent
+  window.addEventListener('message', function (e) {
+    if (!e.data || typeof e.data.type !== 'string') return;
+
+    if (e.data.type === 'inspect:mode') {
+      if (e.data.enabled) {
+        enableInspect();
+      } else {
+        disableInspect();
+      }
+    }
+  });
+
+  // Also support toggling via keyboard (Alt+Shift+I) for standalone testing
+  document.addEventListener('keydown', function (e) {
+    if (e.altKey && e.shiftKey && e.key === 'I') {
+      if (inspectEnabled) {
+        disableInspect();
+      } else {
+        enableInspect();
+      }
+    }
+  });
+
+  console.log('[element-picker] Loaded. Waiting for inspect-mode command (or press Alt+Shift+I).');
+})();
+</script>
+  </body>
+</html>
+
